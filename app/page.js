@@ -11,7 +11,7 @@ import {
   EnvelopeIcon,
 } from "@heroicons/react/24/outline";
 import { Youtube, Facebook } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const Home = () => {
   const [isShrunk, setIsShrunk] = useState(false);
@@ -60,13 +60,16 @@ const Home = () => {
     threshold: 0.1,
   });
 
+  const serviciosRef = useRef(null);
+  const contactoRef = useRef(null);
+
   return (
     <main>
       {/* Hero Section */}
       <section
         className={`${
-          isShrunk ? "h-[70vh]" : "h-screen"
-        } bg-gradient-to-r from-blue-50 to-blue-100 sect1 transition-all duration-500`}
+          isShrunk ? "h-[20vh]" : "h-screen"
+        } bg-gradient-to-r from-blue-700 to-blue-900 sect1 transition-all duration-500`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 h-full flex items-center">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
@@ -77,26 +80,26 @@ const Home = () => {
             inView1 ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-20"
           }`}
             >
-              <h1 className="text-5xl font-extrabold text-blue-800 mb-8">
+              <h1 className="text-5xl font-extrabold text-white mb-8">
                 Venta y renta de impresoras y multifuncionales en Durango
               </h1>
-              <p className="text-xl text-gray-600 mb-4">
+              <p className="text-xl text-white mb-4">
                 ¡Contacta a{" "}
-                <span className="font-bold text-blue-800">Megatrón</span>,
-                expertos en{" "}
-                <span className="font-bold text-blue-800">
+                <span className="font-bold text-white">Megatrón</span>, expertos
+                en{" "}
+                <span className="font-bold text-white">
                   venta y renta de impresoras y multifuncionales
                 </span>
                 !
               </p>
-              <p className="text-xl text-gray-600 mb-8">
+              <p className="text-xl text-white mb-8">
                 Brindamos a nuestros clientes productos y servicios de calidad
                 superando continuamente sus expectativas, apoyados siempre de
                 nuestro profesional equipo de trabajo.
               </p>
               <button
-                className="bg-blue-700 text-white px-10 py-4 rounded-full text-lg font-bold 
-                   hover:bg-blue-800 transform hover:scale-105
+                className="bg-white text-blue-700 px-10 py-4 rounded-full text-lg font-bold 
+                   hover:transform hover:scale-105
                    transition-all duration-300 flex items-center 
                    space-x-2 group shadow-lg hover:shadow-2xl"
               >
@@ -178,7 +181,7 @@ const Home = () => {
       </section>
 
       {/* Services Section */}
-      <section className="py-16">
+      <section id="servicios" ref={serviciosRef} className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-center mb-12">
             Realizamos nuestros servicios a través de tres grupos de actividades
@@ -269,7 +272,7 @@ const Home = () => {
       </section>
 
       {/* Contact Section */}
-      <section className="py-16">
+      <section id="contacto" ref={contactoRef} className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             {/* Contact Information */}
