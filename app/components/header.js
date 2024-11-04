@@ -1,15 +1,12 @@
 "use client";
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
-import {
-  HomeIcon,
-  WrenchScrewdriverIcon,
-  PhoneIcon,
-  ShoppingCartIcon,
-} from "@heroicons/react/24/outline";
+import { PhoneIcon } from "@heroicons/react/24/outline";
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,73 +21,72 @@ const Header = () => {
   return (
     <header
       className={`
-      fixed top-0 w-full bg-white z-50 transition-all duration-300 ease-in-out
-      ${scrolled ? "py-2 shadow-md" : "py-4 shadow-sm"}
-    `}
+        fixed top-0 w-full bg-white z-50 transition-all duration-300 ease-in-out
+        ${scrolled ? "h-14 border-b border-gray-200" : "h-16 "}
+      `}
     >
-      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center">
-          <div className="flex items-center">
-            <Link
-              href="/"
-              className={`transition-all duration-300 ${
-                scrolled ? "scale-90" : "scale-100"
-              }`}
-            >
-              <img
-                src="/logo.png"
-                alt="Megatron"
-                className="h-12 w-auto hover:opacity-80 transition-opacity logo"
-              />
-            </Link>
+      <nav className="h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center h-full">
+          {/* Logo */}
+          <Link
+            href="/"
+            className={`transition-all duration-300 ${
+              scrolled ? "scale-90" : "scale-100"
+            }`}
+          >
+            <img
+              src="/logo.png"
+              alt="Megatron"
+              className="h-10 w-auto hover:opacity-80 transition-opacity logo"
+            />
+          </Link>
+
+          {/* Línea Vertical de Separación */}
+          <div className="border-l-2 border-gray-500 h-0 mx-4"></div>
+
+          {/* Menú de Navegación */}
+          <div className="flex h-full">
+            {["/", "/servicios", "/contacto", "/tienda"].map((route, index) => {
+              const routeNames = ["INICIO", "SERVICIOS", "CONTACTO", "TIENDA"];
+              return (
+                <Link
+                  key={route}
+                  href={route}
+                  className={`
+                    relative flex items-center h-full px-5
+                    ${pathname === route ? " text-blue-600" : "text-gray-700"}
+                    hover:bg-blue-50 transition-colors duration-200
+                  `}
+                >
+                  <span className="text-xs font-bold">{routeNames[index]}</span>
+                  {pathname === route && (
+                    <div
+                      className="absolute left-0 w-full h-1 bg-blue-600"
+                      style={{ bottom: scrolled ? "-1px" : "0" }}
+                    ></div>
+                  )}
+                </Link>
+              );
+            })}
           </div>
 
-          <div className="hidden md:flex items-center space-x-8">
-            <Link
-              href="/"
-              className="flex items-center space-x-2 text-gray-700 hover:text-blue-600 transition-colors group"
-            >
-              <HomeIcon className="w-5 h-5 group-hover:scale-110 transition-transform" />
-              <span>Inicio</span>
-            </Link>
+          {/* Espaciador flexible */}
+          <div className="flex-grow"></div>
 
-            <Link
-              href="/servicios"
-              className="flex items-center space-x-2 text-gray-700 hover:text-blue-600 transition-colors group"
-            >
-              <WrenchScrewdriverIcon className="w-5 h-5 group-hover:scale-110 transition-transform" />
-              <span>Servicios</span>
-            </Link>
-
-            <Link
-              href="/contacto"
-              className="flex items-center space-x-2 text-gray-700 hover:text-blue-600 transition-colors group"
-            >
-              <PhoneIcon className="w-5 h-5 group-hover:scale-110 transition-transform" />
-              <span>Contacto</span>
-            </Link>
-
-            <Link
-              href="/tienda"
-              className="flex items-center space-x-2 text-gray-700 hover:text-blue-600 transition-colors group"
-            >
-              <ShoppingCartIcon className="w-5 h-5 group-hover:scale-110 transition-transform" />
-              <span>Tienda</span>
-            </Link>
-
-            <button
-              className="
-              bg-blue-600 text-white px-6 py-2 rounded-full
+          {/* Botón de Teléfono */}
+          <button
+            className="
+              bg-blue-700 text-white px-6 py-2 rounded-full
               hover:bg-blue-700 transform hover:scale-105
               transition-all duration-300 ease-in-out
               shadow-md hover:shadow-lg
               flex items-center space-x-2
+              text-sm font-bold
             "
-            >
-              <PhoneIcon className="w-4 h-4" />
-              <span>Tel: 618-825-3884</span>
-            </button>
-          </div>
+          >
+            <PhoneIcon className="w-4 h-4" />
+            <span>Tel: 618-825-3884</span>
+          </button>
         </div>
       </nav>
     </header>
