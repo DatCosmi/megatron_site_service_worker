@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 
-const Catalogo = () => {
+const Productos = () => {
   const router = useRouter();
   const [isShrunk, setIsShrunk] = useState(false);
   const [filter, setFilter] = useState({
@@ -177,7 +177,7 @@ const Catalogo = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {filteredProducts.map((product) => (
               <Link
-                href={`/catalogo/${product.id}`}
+                href={`/productos/${product.id}`}
                 key={product.id}
                 className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition-all duration-500"
               >
@@ -205,4 +205,4 @@ const Catalogo = () => {
   );
 };
 
-export default Catalogo;
+export default Productos;

@@ -68,7 +68,7 @@ const Home = () => {
       {/* Hero Section */}
       <section
         className={`${
-          isShrunk ? "h-[20vh]" : "h-screen"
+          isShrunk ? "h-[30vh]" : "h-screen"
         } bg-gradient-to-r from-blue-700 to-blue-900 sect1 transition-all duration-500`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 h-full flex items-center">
