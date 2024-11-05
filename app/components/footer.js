@@ -21,6 +21,7 @@ const Footer = () => {
             <div className="flex space-x-4">
               <a
                 href="https://www.facebook.com/Copimegatron"
+                target="_blank"
                 className="hgroup flex flex-col items-center transition-transform hover:scale-110"
               >
                 <span className="sr-only">Facebook</span>
@@ -33,6 +34,7 @@ const Footer = () => {
               </a>
               <a
                 href="https://www.youtube.com/channel/UC8dCtubf2HdnV4PhMSd89nA"
+                target="_blank"
                 className="group flex flex-col items-center transition-transform hover:scale-110"
               >
                 <span className="sr-only">YouTube</span>

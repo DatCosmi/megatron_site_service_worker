@@ -250,7 +250,7 @@ const Home = () => {
       {/* Brother Section */}
       <section className="bg-blue-600 py-16 transform transition-all duration-1000">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
-          <a href="https://www.brother.com.mx/">
+          <a href="https://www.brother.com.mx/" target="_blank">
             <img
               src="/brother-logo.png"
               alt="Brother"
