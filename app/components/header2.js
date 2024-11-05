@@ -4,7 +4,7 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { PhoneIcon } from "@heroicons/react/24/outline";
 
-const Header = () => {
+const Header2 = () => {
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
 
@@ -29,7 +29,7 @@ const Header = () => {
   return (
     <header
       className={`
-        fixed top-0 w-full bg-white z-50 transition-all duration-300 ease-in-out
+        fixed top-0 w-full z-50 transition-all duration-300 ease-in-out
         ${scrolled ? "h-14 border-b border-gray-200" : "h-16 "}
       `}
     >
@@ -43,9 +43,9 @@ const Header = () => {
             }`}
           >
             <img
-              src="/logo.png"
+              src="/logo-blanco.png"
               alt="Megatron"
-              className="h-10 w-auto hover:opacity-80 transition-opacity logo"
+              className="h-10 w-auto hover:opacity-80 transition-opacity logo2"
             />
           </Link>
 
@@ -68,8 +68,8 @@ const Header = () => {
                     href={route}
                     className={`
                     relative flex items-center h-full px-5
-                    ${isRouteActive(route) ? "text-blue-600" : "text-gray-700"}
-                    hover:bg-blue-50 transition-colors duration-200
+                    ${isRouteActive(route) ? "text-white" : "text-white"}
+                    hover:bg-blue-600 transition-colors duration-200
                   `}
                   >
                     <span className="text-xs font-bold">
@@ -77,7 +77,7 @@ const Header = () => {
                     </span>
                     {isRouteActive(route) && (
                       <div
-                        className="absolute left-0 w-full h-1 bg-blue-600"
+                        className="absolute left-0 w-full h-1 bg-white"
                         style={{ bottom: scrolled ? "-1px" : "0" }}
                       ></div>
                     )}
@@ -93,8 +93,8 @@ const Header = () => {
           {/* Botón de Teléfono */}
           <button
             className="
-              bg-blue-700 text-white px-6 py-2 rounded-full
-              hover:bg-blue-700 transform hover:scale-105
+              bg-white text-blue-700 px-6 py-2 rounded-full
+              hover:bg-blue-100 transform hover:scale-105
               transition-all duration-300 ease-in-out
               shadow-md hover:shadow-lg
               flex items-center space-x-2
@@ -110,4 +110,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default Header2;
