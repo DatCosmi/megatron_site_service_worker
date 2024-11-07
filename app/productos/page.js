@@ -3,6 +3,7 @@ import { useInView } from "react-intersection-observer";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { register } from "../serviceWorkerRegistration";
 
 const Productos = () => {
   const router = useRouter();
@@ -12,6 +13,11 @@ const Productos = () => {
     price: "",
     category: "",
   });
+
+  // Registrar el service worker cuando el componente se monte
+  useEffect(() => {
+    register();
+  }, []);
 
   const handleScroll = () => {
     setIsShrunk(window.scrollY > 50);
@@ -185,6 +191,7 @@ const Productos = () => {
                   src={product.image}
                   alt={product.name}
                   className="w-full h-48 object-contain mb-4 rounded-md"
+                  loading="lazy" // Añadido para mejorar el rendimiento
                 />
                 <h3 className="text-2xl font-semibold mb-2 text-gray-800">
                   {product.name}
